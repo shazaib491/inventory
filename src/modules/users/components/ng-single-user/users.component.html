@@ -1,0 +1,39 @@
+<ngx-spinner ></ngx-spinner>
+<div class="table-responsive">
+
+<table  datatable [dtOptions]="dtOptions" [attr.id]='"releaseDatatable"+count' [dtTrigger]="dtTrigger" class="row-border table table-bordered hover">
+    <thead>
+        <tr *ngIf="allUser">
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of allUser;let i=index">
+            <td>{{i+1}}</td>
+            <td>{{user.user_name}}</td>
+            <td>{{user.user_email}}</td>
+            <td>{{user.user_type}}</td>
+            <td><span class="badge badge-primary">{{user.user_status}}</span>
+            </td>
+            <td>
+                <a [routerLink]="['edit/',user._id]" class="btn btn-primary btn-sm rounded-circle"><i class="fas fa-edit"></i></a>
+
+                <button (click)="changeStatus(user._id,user.user_status)" class="btn btn-info ml-3 btn-sm rounded-circle">
+                    <i [ngClass]="user.user_status === 'Enable' ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off'"
+                        class="fa-solid"></i></button>
+
+                <button class="btn btn-danger rounded-circle btn-sm ml-3" (click)="deleteSingleUser(user._id)"><i
+                        class="fa-solid fa-trash-can"></i></button>
+            </td>
+
+        </tr>
+
+
+    </tbody>
+</table>
+</div>

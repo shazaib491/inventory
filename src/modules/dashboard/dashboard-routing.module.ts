@@ -11,6 +11,7 @@ import * as dashboardContainers from './containers';
 
 /* Guards */
 import * as dashboardGuards from './guards';
+import { AuthGuard } from '@modules/auth/guards';
 
 /* Routes */
 export const ROUTES: Routes = [
@@ -25,9 +26,9 @@ export const ROUTES: Routes = [
                 },
             ],
         } as SBRouteData,
-        canActivate: [],
         component: dashboardContainers.DashboardComponent,
     },
+
     {
         path: 'static',
         data: {

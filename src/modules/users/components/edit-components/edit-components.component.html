@@ -1,0 +1,43 @@
+<sb-layout-dashboard>
+    <sb-dashboard-head title="Users Management" [hideBreadcrumbs]="true"></sb-dashboard-head>
+    <div  class="d-flex justify-content-right">
+        <a class="btn btn-primary ml-auto"  [routerLink]="[ '/users']">Back</a>
+
+    </div>
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <form (submit)="onSubmit()" [formGroup]="form">
+                <div class="form-group">
+                    <label for="username">username</label>
+                    <div class="form-group">
+                        <input id="username" formControlName="user_name" class="form-control"
+                            placeholder="Enter username" name="user_name">
+                        <div *ngIf="f.user_name.touched && f.user_name.invalid" class="text-danger">
+                            <div *ngIf="f.user_name.errors.required">Username is required.</div>
+                            <div *ngIf="f.user_name.errors.minlength">username should be 3 character.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">email</label>
+                    <div class="form-group">
+                        <input id="email" class="form-control" type="email" placeholder="Enter Email" name="user_email"
+                            formControlName="user_email" />
+                            <div *ngIf="f.user_email.touched && f.user_email.invalid" class="text-danger">
+                                <div *ngIf="f.user_email.errors.required">Email is required.</div>
+                                <div *ngIf="f.user_email.errors.email">Please, enter valid email address.</div>
+                            </div>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary"  [disabled]="form.invalid" >Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</sb-layout-dashboard>

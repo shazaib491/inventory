@@ -1,0 +1,61 @@
+<!-- bussiness name,address,contactno,email,timezone,currency -->
+
+<sb-layout-auth
+    ><div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Store</h3></div>
+                    <div class="card-body">
+                        <form  (submit)="saveStore()"  [formGroup]="storeForm" >
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputEmailAddress">Bussiness Name</label>
+                                <input class="form-control py-4"  formControlName="store_name" type="text" placeholder="Enter Bussiness name..." /></div>
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputEmailAddress">Address</label>
+                                <input class="form-control py-4"  formControlName="store_address"  id="inputEmailAddress" type="text" placeholder="Enter address" />
+                            </div>
+                            <div class="form-group">
+                                <label class="small mb-1" for="contactno">Contact no</label>
+                                <input class="form-control py-4"  formControlName="store_contact_no" id="contactno" type="number" placeholder="Enter mobile no" />
+                            </div>
+                            <div class="form-group">
+                                <label class="small mb-1" for="email">Email</label>
+                                <input class="form-control py-4"  formControlName="store_email_address" id="email" type="email" placeholder="Enter Email" />
+                            </div>
+                            <div class="form-group">
+                                <label class="small mb-1" for="timezone">Timezone</label>
+                                <select class="form-control  py-4"  formControlName="store_timezone"  id="timezone" >
+                                    <option [ngValue]="null"  [selected]="true" ]>Select Timezone</option>
+                                    <option
+                                    *ngFor="let timezone of timeZone"
+                                      value="{{timezone.time}} {{timezone.timezone}}"
+                                      >{{timezone.time}} | {{timezone.timezone}}</option>
+
+                                </select>
+
+                                </div>
+                            <div class="form-group">
+                                <label class="small mb-1" for="currency">Currency</label>
+                                <select class="form-control  py-4"  formControlName="store_currency"  id="currency">
+                                    <option *ngFor="let curreny_list of curreny; "  [ngValue]="curreny_list.name"   >
+                                        {{curreny_list.code}} | {{curreny_list.name}} | {{curreny_list.symbol}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                <button type="submit"   [disabled]="storeForm.invalid" class="btn btn-primary w-100">
+                                    Save Detail
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div></sb-layout-auth
+>
+
+
+
+<!-- AIzaSyC-VvbfVZ9gaXoi3xU2tM_38hKxBF9TpzE -->

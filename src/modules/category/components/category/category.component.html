@@ -1,0 +1,48 @@
+<ngx-spinner  type="ball-scale-multiple"></ngx-spinner>
+<div class="table-responsive">
+
+<table datatable [dtOptions]="dtOptions"  [attr.id]='"releaseDatatable"+count'  [dtTrigger]="dtTrigger" class="row-border table table-bordered hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Created Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let category of categories;let i=index">
+            <td>{{i+1}}</td>
+            <td>{{category.category_name}}</td>
+            <td>
+                <span class="badge badge-primary">
+                    {{category.category_status}}</span>
+            </td>
+            <td>
+                {{category.createdAt | date:'medium' }}
+            </td>
+            <td>
+                <a [routerLink]="['edit/',category._id]" class="btn btn-primary rounded-circle btn-sm" title="edit"><i class="fas fa-edit"></i></a>
+
+                <button
+                 (click)="changeStatus(category._id,category.category_status)"
+                 title="status"
+                 class="btn btn-info ml-3 btn-sm rounded-circle">
+                    <i
+                    [ngClass]="category.category_status === 'Enable'
+                    ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off'"
+                        class="fa-solid"></i></button>
+                <button class="btn btn-danger btn-sm rounded-circle ml-3" title="delete" (click)="deleteCategory(category._id)" >
+                    <i class="fa-solid fa-trash-can"></i></button>
+            </td>
+        </tr>
+
+
+
+
+
+
+    </tbody>
+</table>
+</div>

@@ -1,0 +1,54 @@
+<ngx-spinner ></ngx-spinner>
+<div class="table-responsive">
+
+<table datatable [dtOptions]="dtOptions"  [attr.id]='"releaseDatatable"+count'  [dtTrigger]="dtTrigger" class="row-border table table-bordered hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Location Rack Name</th>
+            <th>Status</th>
+            <th>Created Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let location of locationRk;let i=index">
+            <td>{{i+1}}</td>
+            <td>{{location.location_rack_name}}</td>
+            <td>
+                <span class="badge badge-primary">
+                    {{location.location_rack_status}}</span>
+            </td>
+            <td>
+                {{location.createdAt | date:'medium' }}
+            </td>
+            <td>
+                <a [routerLink]="['edit/',location._id]" data-toggle="tooltip" data-placement="top"   title="edit" class="btn btn-primary btn-sm rounded-circle">
+                    <i class="fas fa-edit"></i>
+                </a>
+
+                <button
+                type="button"
+                 (click)="changeStatus(location._id,location.location_rack_status)"
+                 title="status"
+                 data-toggle="tooltip" data-placement="top"
+                 class="btn btn-info btn-sm ml-3 rounded-circle">
+                    <i
+                    [ngClass]="location.location_rack_status === 'Enable'
+                    ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off'"
+                        class="fa-solid"></i></button>
+                <button
+                data-toggle="tooltip" data-placement="top" title="delete"
+                class="btn btn-danger btn-sm rounded-circle ml-3" (click)="deleteLocationRk(location._id)" >
+                    <i class="fa-solid fa-trash-can"></i></button>
+            </td>
+        </tr>
+
+
+
+
+
+
+    </tbody>
+</table>
+</div>

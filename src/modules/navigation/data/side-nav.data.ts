@@ -1,3 +1,4 @@
+import { components } from '@common/components';
 import { SideNavItems, SideNavSection } from '@modules/navigation/models';
 
 export const sideNavSections: SideNavSection[] = [
@@ -7,12 +8,26 @@ export const sideNavSections: SideNavSection[] = [
     },
     {
         text: 'INTERFACE',
-        items: ['layouts', 'pages'],
+        items: [
+            'user',
+            'category',
+            'localtion_rk',
+            'company',
+            // 'layouts',
+            // 'pages',
+            'supplier',
+            'tax',
+            'product',
+            'product_purchase',
+            'order',
+            'logout'
+        ],
     },
-    {
-        text: 'ADDONS',
-        items: ['charts', 'tables'],
-    },
+    // {
+    //     text: 'ADDONS',
+    //     items: ['charts', 'tables'],
+    // },
+
 ];
 
 export const sideNavItems: SideNavItems = {
@@ -20,6 +35,66 @@ export const sideNavItems: SideNavItems = {
         icon: 'tachometer-alt',
         text: 'Dashboard',
         link: '/dashboard',
+    },
+    user: {
+        icon: 'columns',
+        text: 'Users',
+        link: '/users',
+
+    },
+    category: {
+        icon: 'columns',
+        text: 'Category',
+        link: '/category',
+
+    },
+    localtion_rk: {
+        icon: 'columns',
+        text: 'Location Rack',
+        link: '/location'
+    },
+    company: {
+        icon: 'columns',
+        text: 'Company',
+        link: '/company',
+
+    },
+    supplier: {
+        icon: 'columns',
+        text: 'Supplier',
+        link:'/supplier'
+
+
+    },
+    tax: {
+        icon: 'columns',
+        text: 'Tax',
+        link:'/tax'
+
+    },
+    product: {
+        icon: 'columns',
+        text: 'Product',
+        link:'/product'
+    },
+    product_purchase: {
+        icon: 'columns',
+        text: 'Product purchase',
+        link:'/purchase-product'
+
+
+    },
+    order: {
+        icon: 'columns',
+        text: 'Order',
+        link:'/orders'
+
+    },
+
+    logout: {
+        icon: 'columns',
+        text: 'Logout',
+
     },
     layouts: {
         icon: 'columns',
@@ -75,14 +150,17 @@ export const sideNavItems: SideNavItems = {
             },
         ],
     },
-    charts: {
-        icon: 'chart-area',
-        text: 'Charts',
-        link: '/charts',
-    },
-    tables: {
-        icon: 'table',
-        text: 'Tables',
-        link: '/tables',
-    },
+    // charts: {
+    //     icon: 'chart-area',
+    //     text: 'Charts',
+    //     link: '/charts',
+    // },
+    // tables: {
+    //     icon: 'table',
+    //     text: 'Tables',
+    //     link: '/tables',
+    // },
 };
+
+
+

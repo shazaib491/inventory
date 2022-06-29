@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AuthService } from '@modules/auth/services';
 
 @Component({
     selector: 'sb-dashboard-charts',
@@ -7,6 +8,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
     styleUrls: ['dashboard-charts.component.scss'],
 })
 export class DashboardChartsComponent implements OnInit {
-    constructor() {}
-    ngOnInit() {}
+    constructor(private authService:AuthService) {}
+    ngOnInit() {
+        this.authService.autoAuthUser();
+    }
 }

@@ -1,0 +1,60 @@
+<ngx-spinner ></ngx-spinner>
+
+<form>
+    <div class="form-group d-flex col-md-2  col-12 ml-auto">
+        <label for="" class="mr-3 mt-2">search:</label>
+
+        <input class="form-control " type="text"
+        name="searchTerm"
+        [(ngModel)]="countryService.searchTerm" />
+        <span class="ml-3" *ngIf="countryService.loading$ | async">Loading...</span></div>
+<div class="table-responsive">
+        <table class="table table-striped table-bordered ">
+        <thead>
+            <tr>
+                <th scope="col" sbSortable="supplier_name" (sort)="onSort($event)"><span>Supplier Name</span><sb-sort-icon *ngIf='sortedColumn === "supplier_name"' [direction]="sortedDirection"></sb-sort-icon></th>
+                <th scope="col" sbSortable="suppliert_email" (sort)="onSort($event)"><span>Supplier Email</span><sb-sort-icon *ngIf='sortedColumn === "supplier_email"' [direction]="sortedDirection"></sb-sort-icon></th>
+                <th scope="col" sbSortable="supplier_address" (sort)="onSort($event)"><span>Supplier Address</span><sb-sort-icon *ngIf='sortedColumn === "supplier_address"' [direction]="sortedDirection"></sb-sort-icon></th>
+                <th scope="col" sbSortable="supplier_contact_no" (sort)="onSort($event)"><span>Supplier Contact.no</span><sb-sort-icon *ngIf='sortedColumn === "supplier_contact_no"' [direction]="sortedDirection"></sb-sort-icon></th>
+                <th scope="col" sbSortable="createdAt" (sort)="onSort($event)"><span>Date & time </span><sb-sort-icon *ngIf='sortedColumn === "createdAt"' [direction]="sortedDirection"></sb-sort-icon></th>
+                <th scope="col" sbSortable="supplier_status" (sort)="onSort($event)"><span>Status</span><sb-sort-icon *ngIf='sortedColumn === "supplier_status"' [direction]="sortedDirection"></sb-sort-icon></th>
+                <th scope="col" sbSortable="action" (sort)="onSort($event)"><span>Action</span><sb-sort-icon  [direction]="sortedDirection"></sb-sort-icon></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let supplier of suppliers">
+                <td><ngb-highlight [result]="supplier.supplier_name " [term]="countryService.searchTerm"></ngb-highlight></td>
+                <td><ngb-highlight [result]="supplier.supplier_email " [term]="countryService.searchTerm"></ngb-highlight></td>
+                <td><ngb-highlight [result]="supplier.supplier_address " [term]="countryService.searchTerm"></ngb-highlight></td>
+                <td><ngb-highlight [result]="supplier.supplier_contact_no " [term]="countryService.searchTerm"></ngb-highlight></td>
+                <td><ngb-highlight [result]="supplier.createdAt |date:'medium'" [term]="countryService.searchTerm"></ngb-highlight></td>
+                <td><span class="badge badge-primary">{{supplier.supplier_status}}</span>
+                </td>
+                <!-- <td><ngb-highlight [result]="country.population | number" [term]="countryService.searchTerm"></ngb-highlight></td> -->
+                <td>
+                    <button  class="btn btn-primary btn-sm rounded-circle "  title="edit" (click)="openModal(supplier._id)">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm ml-2 rounded-circle" title="status" (click)="changeStatus(supplier._id,supplier.supplier_status)">
+                        <i
+                        [ngClass]="supplier.supplier_status === 'Enable'
+                        ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off'"
+                            class="fa-solid"></i>
+                        </button>
+                        <button (click)="deleteSupplier(supplier._id)" title="delete" class="btn btn-danger btn-sm ml-2 rounded-circle">
+                            <i class="fa-solid fa-trash-can"></i></button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <div class="d-flex justify-content-between p-2">
+        <ngb-pagination [collectionSize]="total$ | async" [(page)]="countryService.page" [pageSize]="countryService.pageSize"></ngb-pagination
+        ><select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="countryService.pageSize">
+            <option [ngValue]="2">2 items per page</option>
+            <option [ngValue]="4">4 items per page</option>
+            <option [ngValue]="6">6 items per page</option>
+        </select>
+    </div>
+</form>

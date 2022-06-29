@@ -1,0 +1,17 @@
+<sb-layout-dashboard>
+    <sb-dashboard-head title="Location Rack  Management" [hideBreadcrumbs]="true"></sb-dashboard-head>
+    <sb-card>
+        <div class="card-body ml-auto ">
+            <a class="btn btn-primary" [routerLink]="['/location/addLocation']">Add Location Rack</a>
+
+        </div>
+    </sb-card>
+    <sb-card>
+        <div class="card-header">
+            <fa-icon class="mr-1" [icon]='["fas", "table"]'></fa-icon>User Management
+        </div>
+        <div class="card-body">
+            <sb-Location-rk></sb-Location-rk>
+        </div>
+    </sb-card>
+</sb-layout-dashboard>

@@ -20,6 +20,7 @@
         "deprecation": {
             "severity": "warning"
         },
+        "angular/file-name":0,
         "directive-class-suffix": true,
         "directive-selector": [
             true,

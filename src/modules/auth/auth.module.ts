@@ -19,6 +19,8 @@ import * as authGuards from './guards';
 
 /* Services */
 import * as authServices from './services';
+import { StoreComponent } from './containers/store/store.component';
+import { LoginComponent } from './containers/login/login.component';
 
 @NgModule({
     imports: [
@@ -30,7 +32,7 @@ import * as authServices from './services';
         NavigationModule,
     ],
     providers: [...authServices.services, ...authGuards.guards],
-    declarations: [...authContainers.containers, ...authComponents.components],
+    declarations: [...authContainers.containers, ...authComponents.components, StoreComponent, LoginComponent],
     exports: [...authContainers.containers, ...authComponents.components],
 })
 export class AuthModule {}

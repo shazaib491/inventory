@@ -1,6 +1,6 @@
 import { Country } from '../models';
 
-export const COUNTRIES: Country[] = [
+export const COUNTRIES: any[] = [
     {
         id: 1,
         name: 'Russia',

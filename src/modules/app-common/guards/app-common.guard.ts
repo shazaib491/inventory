@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { AuthService } from '@modules/auth/services';
 import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class AppCommonGuard implements CanActivate {
-    canActivate(): Observable<boolean> {
+
+    canActivate(
+        route: ActivatedRouteSnapshot,
+         state: RouterStateSnapshot):  Observable<boolean | UrlTree>  {
+
         return of(true);
     }
 }

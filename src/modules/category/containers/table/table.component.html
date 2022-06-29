@@ -1,0 +1,16 @@
+<sb-layout-dashboard>
+    <sb-dashboard-head title="Category Management" [hideBreadcrumbs]="true"></sb-dashboard-head>
+    <sb-card>
+        <div class="card-body ml-auto ">
+            <a class="btn btn-primary" [routerLink]="['/category/addCategory']">Add Category</a>
+         </div>
+    </sb-card>
+    <sb-card>
+        <div class="card-header">
+            <fa-icon class="mr-1" [icon]='["fas", "table"]'></fa-icon>Category Management
+        </div>
+        <div class="card-body">
+            <sb-cateogry></sb-cateogry>
+        </div>
+    </sb-card>
+</sb-layout-dashboard>

@@ -1,0 +1,63 @@
+<ngx-spinner></ngx-spinner>
+<div>
+    <div class="table-responsive">
+        <table class="table" datatable [dtOptions]="dtOptions" [attr.id]='"releaseDatatable"+count' [dtTrigger]="dtTrigger"
+        class="row-border hover table-bordered">
+        <thead>
+            <tr>
+
+                <th>Product Name</th>
+                <th>Bacth no</th>
+                <th>Supplier</th>
+                <th>Quantity</th>
+                <th>Available Quantity</th>
+                <th>price per unit</th>
+                <th>Total Costs</th>
+                <th>Mfg Date</th>
+                <th>Expiry Date</th>
+                <th>Sales Price</th>
+                <th>Purchase Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of purchaseProducts">
+                <td>{{item.item_id?.item_name}}</td>
+                <td>{{item.item_batch_no}}</td>
+                <td>{{item.supplier_id?.supplier_name}}</td>
+                <td>{{item?.item_purchase_qty}} </td>
+                <td>{{item?.available_quantity}}</td>
+                <td>{{item?.item_purchase_price_per_unit}}</td>
+                <td>{{item?.item_purchase_qty*item?.item_purchase_price_per_unit}}</td>
+                <td>{{item?.item_manufacturer_month+ "/"+ item?.item_manufacturer_year}}</td>
+                <td>{{item?.item_expire_month+ "/"+ item?.item_expire_year}}</td>
+                <td>{{item?.item_sales_price_per_unit}}</td>
+                <td>{{item?.createdAt | date:'short' }}</td>
+                <td><span class="badge badge-primary">{{item?.item_status}}</span></td>
+                <td class="d-flex">
+                    <a [routerLink]="['edit/',item._id]" title="edit" class="btn btn-primary rounded-circle btn-sm">
+                        <i class="fas fa-edit"></i>
+                    </a>
+
+                    <button (click)="changeStatus(item._id,item?.item_status)" title="status" class="btn btn-info rounded-circle btn-sm ml-3">
+                        <i
+                        [ngClass]="item?.item_status === 'Enable'
+                        ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off'"
+                            class="fa-solid"></i></button>
+                    <button class="btn btn-danger rounded-circle btn-sm ml-3" title="delete" (click)="deletePurchaseProduct(item._id)" >
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </td>
+            </tr>
+
+
+
+
+
+
+        </tbody>
+    </table>
+
+    </div>
+</div>

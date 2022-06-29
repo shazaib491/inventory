@@ -1,0 +1,28 @@
+<sb-layout-dashboard>
+    <sb-dashboard-head title="User-Profile" [hideBreadcrumbs]="true"></sb-dashboard-head>
+    <sb-card>
+        <div class="card-body ">
+
+
+                    <form (submit)="editUser()" [formGroup]="forgotForm">
+                        <div class="form-group col-md-6">
+                            <label for="">Username</label>
+                            <input type="text" placeholder="User Name" formControlName="user_name"   class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Email</label>
+                            <input type="email" placeholder="Email Address" formControlName="user_email" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Password</label>
+                            <input type="password" placeholder="*********" formControlName="user_password" class="form-control">
+                        </div>
+                        <div>
+                            <button class="btn btn-primary ml-3"  [disabled]="forgotForm.invalid">Edit</button>
+                        </div>
+
+                    </form>
+            </div>
+
+    </sb-card>
+</sb-layout-dashboard>

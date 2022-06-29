@@ -1,0 +1,51 @@
+<ng-template #content let-modal >
+    <div class="modal-header ">
+        <h4 class="modal-title" id="modal-basic-title">Supplier Model</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="supplierForm" (submit)="onSubmit()">
+          <div class="form-group">
+            <label for="supplier">Supplier Name</label>
+            <div class="input-group">
+              <input id="supplier" formControlName="supplier_name"  class="form-control" placeholder="Enter Supplier Name" name="companyname">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <div class="input-group">
+              <input id="email" class="form-control" formControlName="supplier_email"  placeholder="Enter Email Address" name="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contact">Contact no</label>
+            <div class="input-group">
+              <input id="contact" class="form-control" formControlName="supplier_contact_no" placeholder="Enter Contact no" name="contactno">
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="address">Address</label>
+            <div class="input-group">
+              <input id="address" class="form-control" formControlName="supplier_address" placeholder="Enter Address Name" name="companyname">
+            </div>
+          </div>
+
+
+
+          <div>
+            <button class="btn btn-primary">Add</button>
+          </div>
+        </form>
+      </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      </div>
+  </ng-template>
+  <button class="btn btn-primary"  (click)="open(content)">Add </button>
+  <!-- <ng-container *ngTemplateOutlet="content;context:ctx">
+</ng-container> -->

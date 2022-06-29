@@ -37,6 +37,7 @@ export class NavigationService {
     }
 
     routeData$(): Observable<SBRouteData> {
+
         return this._routeData$;
     }
 

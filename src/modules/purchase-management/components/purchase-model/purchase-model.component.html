@@ -1,0 +1,70 @@
+<ngx-spinner  type="ball-scale-multiple"></ngx-spinner>
+
+<sb-layout-dashboard>
+    <sb-dashboard-head title="Product Management" [hideBreadcrumbs]="true"></sb-dashboard-head>
+    <div class="d-flex justify-content-right">
+        <a class="btn btn-primary ml-auto" [routerLink]="[ '/product']">Back</a>
+
+    </div>
+    <div class="row ml-3 mt-5 ">
+
+        <div class="col-md-12 p-3 m-auto ">
+            <div class="card rounded">
+                <div class="card-header">
+                  Product
+                </div>
+                <div class="card-body">
+        <form class="row" [formGroup]="productForm" (submit)="onSubmit()">
+          <div class="form-group col-md-6">
+            <label for="product">Product Name</label>
+            <div class="input-group">
+              <input id="product" class="form-control" placeholder="Enter Product Name" formControlName="item_name">
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="companyname">Product Manufactered By</label>
+            <div class="input-group">
+                <select name="companyname" id="companyname"  class="form-control" formControlName="item_manufactured">
+                    <option value="" disabled selected>select manufactered product </option>
+                    <option *ngFor="let company of products.company" [ngValue]="company._id">{{company.company_name}}</option>
+
+                </select>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="categoryname">Category Name</label>
+            <div class="input-group">
+                <select name="categoryname" id="categoryname" class="form-control" formControlName="item_category">
+                    <option value="" disabled selected>select Category </option>
+                    <option *ngFor="let category of products.category" [ngValue]="category._id">{{category.category_name}}</option>
+
+                </select>
+            </div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="categoryname">Location Rack</label>
+            <div class="input-group">
+                <select name="locationrack" id="locationrack" class="form-control" formControlName="item_localtion_rack">
+                    <option value="" disabled selected>select Location Rack </option>
+                    <option *ngFor="let location of products.locationRk" [ngValue]="location._id">{{location.location_rack_name}}</option>
+
+                </select>
+            </div>
+          </div>
+          <div class="form-group col-12">
+            <label for="">Quantity</label>
+            <input type="number" formControlName="item_avialable_quantity" placeholder="Enter Quantity"  class="form-control">
+          </div>
+
+          <div  >
+            <button class="btn btn-primary ml-3 " type="submit">Add</button>
+          </div>
+        </form>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+</sb-layout-dashboard>

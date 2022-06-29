@@ -1,0 +1,53 @@
+<ngx-spinner></ngx-spinner>
+<div class="table-responsive">
+    <table datatable [dtOptions]="dtOptions" [attr.id]='"releaseDatatable"+count' [dtTrigger]="dtTrigger"
+    class="row-border hover table table-bordered">
+    <thead>
+        <tr>
+
+            <th>Product Name</th>
+            <th>Company</th>
+            <th>Category</th>
+            <th>Location Rack</th>
+            <th>Available Quantity</th>
+            <th>status</th>
+            <th>Added On</th>
+            <th>Updated On</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td>{{product.item_name}}</td>
+            <td>{{product.item_manufactured.company_name}}</td>
+            <td>{{product.item_category.category_name}} </td>
+            <td>{{product.item_localtion_rack.location_rack_name}}</td>
+            <td>{{product.item_avialable_quantity}}</td>
+            <td><span class="badge badge-primary">{{product.item_status}}</span></td>
+            <td>{{product.createdAt | date:'short'}}</td>
+            <td>{{product.updatedAt | date:'short'}}</td>
+            <td class="d-flex">
+                <a [routerLink]="['edit/',product._id]" class="btn btn-primary btn-sm rounded-circle" title="edit">
+                    <i class="fas fa-edit"></i>
+                </a>
+
+                <button (click)="changeStatus(product._id,product.item_status)" title="status" class="btn btn-info ml-3 btn-sm rounded-circle">
+                     <i
+                    [ngClass]="product.item_status === 'Enable'
+                    ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off'"
+                        class="fa-solid"></i></button>
+                <button class="btn btn-danger btn-sm rounded-circle ml-3" title="delete" (click)="deleteProduct(product._id)" >
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </td>
+        </tr>
+
+
+
+
+
+
+    </tbody>
+</table>
+</div>
+

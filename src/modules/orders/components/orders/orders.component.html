@@ -1,0 +1,130 @@
+<ngx-spinner></ngx-spinner>
+<div *ngIf="isPrintable">
+    <div class="col-md-10 m-auto mt-5 p-3 border" id="print-section">
+        <h1 class="text-center font-weight-bold ">Inventory Trader's</h1>
+            <div class="row p-3">
+                <div class="col-md-3 border font-weight-bold  p-3">
+                    Customer Name
+                </div>
+                <div class="col-md-6 border p-3 font-weight-bold">
+                    {{isArr.buyer_name}}
+                </div>
+            </div>
+
+
+            <div class="table-responsive"  >
+                <table class="table table-bordered ">
+                    <thead>
+                      <tr>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Mfg</th>
+                        <th scope="col">Batch No</th>
+                        <th scope="col">Expiry Date</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Total Price</th>
+                      </tr>
+                    </thead>
+                    <tbody >
+
+                      <tr *ngFor="let item of orderItems" >
+                        <th scope="row">{{item?.item_id?.item_name}}</th>
+                        <td>{{item?.item_id?.item_manufactured.company_short_name}}</td>
+                        <td>{{item.item_purchase_id.item_batch_no}}</td>
+                        <td>{{item.item_purchase_id.item_expire_month}}/{{item.item_purchase_id.item_expire_year}}</td>
+                        <td>
+                            {{item.item_quantity}}
+                            </td>
+                        <td>{{item.item_purchase_id.item_sales_price_per_unit}}</td>
+                        <td>{{item.item_quantity * item.item_purchase_id.item_sales_price_per_unit}}</td>
+                      </tr>
+
+
+                      <tr *ngFor="let item of tax;let i=index">
+                        <th class="text-right" colspan="6">{{item.tax_name}} {{item.tax_percentage}}.00%</th>
+                        <!-- <td>
+                            {{calculation() *item.tax_percentage /100 }}</td> -->
+                            <td>
+                                {{(isArr.order_total_amount*item.tax_percentage)/100}}
+                            </td>
+                      </tr>
+                      <tr>
+                        <td colspan="6" class="text-right">
+                            <!-- <button class="btn btn-primary">Calculate Gst</button> -->
+                        </td>
+                        <td>
+                            <!-- {{calculateGst()}} -->
+                        </td>
+                      </tr>
+                      <tr>
+                        <th class="text-right" colspan="6">Total</th>
+                        <td>{{isArr.order_total_amount+isArr.order_tax_percentage}}</td>
+                      </tr>
+
+
+                    </tbody>
+                  </table>
+            </div>
+
+
+
+    </div>
+</div>
+<button class="d-none" #print   printSectionId="print-section"  printTitle="Inventory Bill"
+[useExistingCss]="true"  ngxPrint >print</button>
+<div class="table-responsive"   >
+
+    <table datatable [dtOptions]="dtOptions" [attr.id]='"releaseDatatable"+count' [dtTrigger]="dtTrigger"
+        class="row-border table table-bordered hover"
+
+        >
+        <thead>
+            <tr>
+                <th>Order Name</th>
+                <th>Customer Name</th>
+                <th>Order Amount</th>
+                <th>Created By</th>
+                <th>Status</th>
+                <th>Added On</th>
+                <th>Updated On</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders;let i=index" >
+                <!-- *ngFor="let location of locationRk;let i=index" -->
+                <td>{{order._id}}</td>
+                <td>{{order.buyer_name}}</td>
+                <td>
+                    {{order.order_total_amount}}
+                    <!-- <span class="badge badge-primary">
+                        12/05/2022
+                    </span> -->
+                </td>
+                <td>
+                    {{order.order_created_by.user_type}}
+                </td>
+                <td>{{order.user_status}}</td>
+                <td>{{order.createdAt | date:'short'}}</td>
+                <td>{{order.updatedAt | date:'short'}}</td>
+                <td class="d-flex h-100">
+                    <button class="btn btn-warning btn-sm rounded-circle "
+                     title="print"
+                     (click)="onPrint(order._id)" ><i class="fas fa-print text-light"></i>
+                    </button>
+                    <a [routerLink]="['edit/',order._id]" data-toggle="tooltip" title="edit" data-placement="top" title="edit"
+                        class="btn btn-primary btn-sm rounded-circle ml-3">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <button data-toggle="tooltip" data-placement="top" title="delete"
+                        class="btn btn-danger btn-sm rounded-circle ml-3" (click)="deleteOrder(order._id)">
+                        <i class="fa-solid fa-trash-can"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+

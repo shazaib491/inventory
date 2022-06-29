@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AuthService } from '@modules/auth/services';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'sb-dashboard',
@@ -7,6 +9,12 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
     styleUrls: ['dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-    constructor() {}
-    ngOnInit() {}
+    userIsAuthenticated = false;
+    private authListenerSubs?: Subscription;
+    constructor(private authService:AuthService) {}
+    ngOnInit() {
+        this.userIsAuthenticated = this.authService.getIsAuth();
+        this.authService.autoAuthUser();
+        this.authService.isAuthenticated=this.userIsAuthenticated
+    }
 }

@@ -6,6 +6,7 @@ import {
     platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
 import 'zone.js/dist/zone-testing';
+import '@angular/localize/init';
 
 declare const require: any;
 

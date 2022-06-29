@@ -17,12 +17,12 @@ export const ROUTES: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'login',
+        redirectTo: 'master',
     },
     {
-        path: 'login',
+        path: 'master',
         canActivate: [],
-        component: authContainers.LoginComponent,
+        component: authContainers.MasterComponent,
         data: {
             title: 'Pages Login - SB Admin Angular',
         } as SBRouteData,
@@ -41,6 +41,22 @@ export const ROUTES: Routes = [
         component: authContainers.ForgotPasswordComponent,
         data: {
             title: 'Pages Forgot Password - SB Admin Angular',
+        } as SBRouteData,
+    },
+    {
+        path: 'store',
+        canActivate: [],
+        component: authContainers.StoreComponent,
+        data: {
+            title: 'Pages Store - SB Admin Angular',
+        } as SBRouteData,
+    },
+    {
+        path: 'login',
+        canActivate: [],
+        component: authContainers.LoginComponent,
+        data: {
+            title: 'Pages Store - SB Admin Angular',
         } as SBRouteData,
     },
 ];

@@ -4,6 +4,15 @@
 
 export const environment = {
     production: false,
+    authUrl:'http://localhost:3000/',
+    categoryUrl:'http://localhost:3000/category',
+    locationRkUrl:'http://localhost:3000/locationRk',
+    campanyUrl:'http://localhost:3000/company',
+    supplierUrl:'http://localhost:3000/supplier',
+    productUrl:'http://localhost:3000/products',
+    purchaseProductUrl:'http://localhost:3000/purchaseProducts',
+    taxUrl:'http://localhost:3000/tax',
+    ordersUrl:'http://localhost:3000/orders'
 };
 
 /*

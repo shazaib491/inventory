@@ -1,0 +1,34 @@
+<ng-template #content let-modal >
+    <div class="modal-header ">
+        <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (submit)="onSubmit(userInputForm)"   #userInputForm="ngForm">
+          <div class="form-group">
+            <label for="username">username</label>
+            <div class="input-group">
+              <input id="username" ngModel  #inputUsername class="form-control" placeholder="Enter username" name="user_name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">email</label>
+            <div class="input-group">
+              <input id="email"  ngModel  #inputEmail class="form-control" type="email" placeholder="Enter Email" name="user_email" >
+            </div>
+          </div>
+
+          <div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      </div>
+  </ng-template>
+  <button class="btn btn-primary"  (click)="open(content)">
+    {{mode=='insert'?'Add':'Edit'}}
+    User</button>

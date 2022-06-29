@@ -1,0 +1,15 @@
+<sb-layout-dashboard
+    >
+    <sb-dashboard-head title="Company  Management" [hideBreadcrumbs]="true"></sb-dashboard-head
+    ><sb-card
+        ><div class="card-body ml-auto ">
+        <a class="btn btn-primary ml-auto" [routerLink]="[ '/company/addCompany']">Add Company</a>
+
+        </div></sb-card
+    ><sb-card
+        ><div class="card-header"><fa-icon class="mr-1" [icon]='["fas", "table"]'></fa-icon>Company Management</div>
+        <div class="card-body"><sb-Company></sb-Company></div></sb-card
+></sb-layout-dashboard>
+
+
+

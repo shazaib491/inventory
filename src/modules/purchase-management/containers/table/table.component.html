@@ -1,0 +1,17 @@
+<sb-layout-dashboard>
+    <sb-dashboard-head title="Product  Management" [hideBreadcrumbs]="true"></sb-dashboard-head>
+    <sb-card>
+        <div class="card-body ml-auto ">
+            <a class="btn btn-primary" [routerLink]="['/product/addProduct']">Add Product</a>
+
+        </div>
+    </sb-card>
+    <sb-card>
+        <div class="card-header">
+            <fa-icon class="mr-1" [icon]='["fas", "table"]'></fa-icon>User Management
+        </div>
+        <div class="card-body">
+            <sb-Purchase ></sb-Purchase>
+        </div>
+    </sb-card>
+</sb-layout-dashboard>

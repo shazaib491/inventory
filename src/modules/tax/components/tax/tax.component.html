@@ -1,0 +1,59 @@
+<ngx-spinner  type="ball-scale-multiple"></ngx-spinner>
+<div class="table-responsive">
+
+<table datatable [dtOptions]="dtOptions"  [attr.id]='"releaseDatatable"+count'  [dtTrigger]="dtTrigger" class="row-border table table-bordered hover">
+    <thead>
+        <tr>
+            <th>Tax Name</th>
+            <th>Percentage </th>
+            <th>Status</th>
+            <th>Added</th>
+            <th>Updated</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tax of taxation;let i=index">
+
+            <td>
+                {{tax.tax_name}}
+            </td>
+            <td>
+                {{tax.tax_percentage}}
+            </td>
+            <td>
+                <span class="badge badge-primary">
+                    {{tax.tax_status}}
+                </span>
+            </td>
+            <td>
+
+                 {{tax.createdAt | date:'medium' }}
+            </td>
+            <td>
+                {{tax.updatedAt | date:'medium' }}
+            </td>
+            <td>
+                 <a [routerLink]="['edit/',tax._id]" class="btn btn-primary btn-sm rounded-circle">
+                    <i class="fas fa-edit"></i></a>
+
+                <button
+                 (click)="changeStatus(tax._id,tax.tax_status)"
+                 class="btn btn-info ml-3 btn-sm rounded-circle">
+                    <i
+                    [ngClass]="tax.tax_status === 'Enable'
+                    ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off'"
+                        class="fa-solid"></i></button>
+                <button class="btn btn-danger rounded-circle ml-3 btn-sm rounded-circle" (click)="deleteTax(tax._id)" >
+                    <i class="fa-solid fa-trash-can"></i></button>
+            </td>
+        </tr>
+
+
+
+
+
+
+    </tbody>
+</table>
+</div>
